@@ -52,7 +52,7 @@ HKEY_CURRENT_USER\SOFTWARE\Valve\Hammer\General", "Undo Levels", 131072
 
 1. **Hammer editor** for some reason **cannot properly open** `.vmx` through launch parameters, so when opening `.vmx`, the utility creates a copy of the map with the suffix `_x.vmf` and launches it. **If a file with the same name already exists during copying, the utility will ask if it can replace it.**
 
-2. **In the Hammer editor window title** after opening a map **and in the file replacement dialog**, **a broken path to the map may be displayed.** Don't worry, **this is strictly a graphical artifact and does not affect functionality!**
+2. ~~**In the Hammer editor window title** after opening a map **and in the file replacement dialog**, **a broken path to the map may be displayed.** Don't worry, **this is strictly a graphical artifact and does not affect functionality!**~~ **[FIXED!]**
 
 ## License
 
