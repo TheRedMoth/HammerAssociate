@@ -3,7 +3,6 @@
 block_cipher = None
 
 a = Analysis(['main.py'],
-             pathex=['E:/Python/HammerAssociate/compile'],
              binaries=[],
              hiddenimports=[],
              hookspath=[],
@@ -17,7 +16,7 @@ a = Analysis(['main.py'],
 pyz = PYZ(a.pure, a.zipped_data,
           cipher=block_cipher)
 
-a.datas += [('main.py', 'main.py', 'DATA')]  # Исправленная строка для добавления файла в список данных
+a.datas += [('main.py', 'main.py', 'DATA')]
 
 exe = EXE(pyz,
           a.scripts,
@@ -27,11 +26,11 @@ exe = EXE(pyz,
           [],
           name='HammerAssociate',
           description='Use me to open up .vmf, .vmx, .vmf_autosave or .vmf_autosavx files.',
-          icon=['res/icon_vmf.ico', 'res/icon_vmx.ico', 'res/icon_vmf_autosave.ico', 'res/icon_vmf_autosavx.ico'],  # Путь к иконке .ico (если нужно)
+          icon=['res/icon_vmf.ico', 'res/icon_vmx.ico', 'res/icon_vmf_autosave.ico', 'res/icon_vmf_autosavx.ico'],
           debug=False,
           bootloader_ignore_signals=False,
           strip=False,
           upx=True,
           upx_exclude=[],
           runtime_tmpdir=None,
-          console=False)  # Установите значение console на False, чтобы избежать консольного окна
+          console=False)
