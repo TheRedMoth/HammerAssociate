@@ -56,6 +56,6 @@ HKEY_CURRENT_USER\SOFTWARE\Valve\Hammer\General", "Undo Levels", 131072
 
 ## License
 
-The utility has no license ¯\_(ツ)_/¯ You can do whatever you want with it!
+The utility has no license ¯\\\_(ツ)_/¯ You can do whatever you want with it!
 
 ###### * This text, like the utility itself, was written and translated using ChatGPT-3.5!
