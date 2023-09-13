@@ -1,26 +1,8 @@
 import os
 import sys
-import ctypes
 import winreg
+import win32api
 import subprocess
-
-# Определяем функцию, это обертка над MessageBox из WinAPI
-MessageBox = ctypes.windll.user32.MessageBoxW
-
-# Определяем типы параметров функции
-MessageBox.argtypes = (ctypes.c_void_p, ctypes.c_wchar_p, ctypes.c_wchar_p, ctypes.c_uint)
-MessageBox.restype = ctypes.c_int
-
-# Определяем функцию для установки значения в реестре
-def set_registry_value(key_path, value_name, value_data, value_type):
-    print(f"Setting registry value: {value_name} = {value_data} ({value_type})")
-    try:
-        key = winreg.OpenKey(winreg.HKEY_CURRENT_USER, key_path, 0, winreg.KEY_ALL_ACCESS)
-        winreg.SetValueEx(key, value_name, 0, value_type, value_data)
-        winreg.CloseKey(key)
-        return True
-    except:
-        return False
 
 def find_hammer(file_path) -> str:
     # Получение пути к папке, содержащей файл карты
@@ -58,7 +40,7 @@ def open_hammer(file_path):
     # Проверка расширения файла
     if not file_path.lower().endswith(('.vmf', '.vmx', '.vmf_autosave', '.vmf_autosavx')):
         # Вызываем функцию MessageBox для отображения диалогового окна ошибки
-        ctypes.windll.user32.MessageBoxW(None, 'Invalid file type. Only .vmf, .vmx, .vmf_autosave or .vmf_autosavx files are supported.', "HammerAssociate", 0x10)
+        win32api.MessageBox(None, 'Invalid file type. Only .vmf, .vmx, .vmf_autosave or .vmf_autosavx files are supported.', "HammerAssociate", 0x10)
         return
     
     # Если расширение файла .vmx, создаем копию файла с новым именем
@@ -67,7 +49,7 @@ def open_hammer(file_path):
         
         # Проверяем, существует ли уже файл с таким именем
         if os.path.exists(new_file_path):
-            response = ctypes.windll.user32.MessageBoxW(None, 'The file {} already exists. Do you want to replace it?'.format(new_file_path), "HammerAssociate", 0x4 | 0x20)
+            response = win32api.MessageBox(None, f'The file "{win32api.GetLongPathName(new_file_path)}" already exists. Do you want to replace it?', "HammerAssociate", 0x4 | 0x20)
             
             if response != 6:  # 6 corresponds to "Yes" button in MessageBox
                 return
@@ -79,22 +61,16 @@ def open_hammer(file_path):
             
             file_path = new_file_path
         except OSError:
-            ctypes.windll.user32.MessageBoxW(None, 'Failed to copy the file.', "HammerAssociate", 0x10)
+            win32api.MessageBox(None, 'Failed to copy the file.', "HammerAssociate", 0x10)
             return
     
     # Поиск пути к Hammer
     hammer_path = find_hammer(file_path)
     if hammer_path:
-        # Установка значений в реестре
-        set_registry_value(r"SOFTWARE\Valve\Hammer\3D Views", "BackPlane", 131072, winreg.REG_DWORD)
-        set_registry_value(r"SOFTWARE\Valve\Hammer\3D Views", "DetailDistance", 131072, winreg.REG_DWORD)
-        set_registry_value(r"SOFTWARE\Valve\Hammer\3D Views", "ModelDistance", 131072, winreg.REG_DWORD)
-        set_registry_value(r"SOFTWARE\Valve\Hammer\General", "Undo Levels", 131072, winreg.REG_SZ)
-        
         # Запуск Hammer с указанным файлом карты
-        subprocess.Popen([hammer_path, '-nop4', '-map', file_path])
+        subprocess.Popen([hammer_path, '-nop4', win32api.GetLongPathName(file_path)])
     else:
-        ctypes.windll.user32.MessageBoxW(None, '"bin\hammer.exe" was not found.', "HammerAssociate", 0x10)
+        win32api.MessageBox(None, '"bin\hammer.exe" was not found.', "HammerAssociate", 0x10)
 
 if __name__ == "__main__":
     # Проверяем, есть ли переданные аргументы командной строки
@@ -103,4 +79,4 @@ if __name__ == "__main__":
         for file_path in sys.argv[1:]:
             open_hammer(file_path) # Запускаем Hammer с каждым путем к файлу
     else:
-        MessageBox(None, 'Open .vmf, .vmx, .vmf_autosave, .vmf_autosavx file via HammerAssociate.exe in the "Open with" context menu.', "HammerAssociate", 0x40)
+        win32api.MessageBox(None, 'Open .vmf, .vmx, .vmf_autosave, .vmf_autosavx file via HammerAssociate.exe in the "Open with" context menu.', "HammerAssociate", 0x40)
