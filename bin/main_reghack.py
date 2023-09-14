@@ -3,6 +3,7 @@ import sys
 import winreg
 import win32api
 import subprocess
+import win32com.client
 
 # Определяем функцию для установки значения в реестре
 def set_registry_value(key_path, value_name, value_data, value_type):
@@ -16,35 +17,45 @@ def set_registry_value(key_path, value_name, value_data, value_type):
         return False
 
 def find_hammer(file_path) -> str:
-    # Получение пути к папке, содержащей файл карты
     map_dir = os.path.dirname(file_path)
 
-    # Поиск hammer.exe в иерархии папок
+    # Поиск hammerplusplus.exe или ярлыка в иерархии папок
     current_path = map_dir
     while True:
         bin_path = os.path.join(current_path, 'bin')
+        
+        # Поиск ярлыка hammerplusplus.exe
+        lnk_path = os.path.join(bin_path, 'hammerplusplus.exe.lnk')
+        if os.path.exists(lnk_path):
+            return win32com.client.Dispatch("WScript.Shell").CreateShortCut(lnk_path).TargetPath
+        
+        # Поиск hammerplusplus.exe
+        hammer_path = os.path.join(bin_path, 'hammerplusplus.exe')
+        if os.path.exists(hammer_path):
+            return hammer_path
+
+        # Поиск hammer.exe
         hammer_path = os.path.join(bin_path, 'hammer.exe')
         if os.path.exists(hammer_path):
             return hammer_path
 
+        # Идём в родительскую папку
         parent_dir = os.path.dirname(current_path)
-        # Проверка достигнут ли корневой каталог
         if current_path == parent_dir:
             break
         current_path = parent_dir
 
-    # Если hammer.exe не найден, получаем путь из реестра
+    # Если hammer.exe не найден, получаем путь о последнем запущенном Hammer из реестра
     try:
-        with winreg.OpenKey(winreg.HKEY_CURRENT_USER, r"SOFTWARE\Valve\Hammer\General") as key:
-            hammer_dir = winreg.QueryValueEx(key, "Directory")[0]
-            
-        # Формирование полного пути к Hammer
-        hammer_exe_path = os.path.join(hammer_dir, "hammer.exe")
-        
-        if os.path.exists(hammer_exe_path):
-            return hammer_exe_path
+        with winreg.OpenKey(winreg.HKEY_CURRENT_USER, r'SOFTWARE\Valve\Hammer\General') as key:
+            hammer_dir = winreg.QueryValueEx(key, 'Directory')[0]
+
+        hammer_path = os.path.join(hammer_dir, 'hammer.exe')
+        if os.path.exists(hammer_path):
+            return hammer_path
     except FileNotFoundError:
         pass
+
     return None
 
 def open_hammer(file_path):
@@ -56,7 +67,7 @@ def open_hammer(file_path):
     
     # Если расширение файла .vmx, создаем копию файла с новым именем
     if file_path.lower().endswith('.vmx'):
-        new_file_path = os.path.splitext(file_path)[0] + "_x.vmf"
+        new_file_path = os.path.splitext(win32api.GetLongPathName(file_path))[0] + "_x.vmf"
         
         # Проверяем, существует ли уже файл с таким именем
         if os.path.exists(new_file_path):
