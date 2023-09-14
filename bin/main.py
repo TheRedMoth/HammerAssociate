@@ -45,7 +45,7 @@ def open_hammer(file_path):
     
     # Если расширение файла .vmx, создаем копию файла с новым именем
     if file_path.lower().endswith('.vmx'):
-        new_file_path = os.path.splitext(file_path)[0] + "_x.vmf"
+        new_file_path = os.path.splitext(win32api.GetLongPathName(file_path))[0] + "_x.vmf"
         
         # Проверяем, существует ли уже файл с таким именем
         if os.path.exists(new_file_path):
