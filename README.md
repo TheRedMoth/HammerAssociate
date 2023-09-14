@@ -8,6 +8,14 @@ It is worth noting that the **REGHACK** is now applied only to the regular **Ham
 
 #### You still can opt out of the REGHACK feature during compilation in the corresponding choice!
 
+## Extended support via shortcuts!
+
+If you want to use **HammerPlusPlus** with other games besides those officially supported, you can create a shortcut to implement adaptation.
+
+For example, to launch a map from **Portal 2** using **HammerPlusPlus**, you need to create a shortcut for `hammerplusplus.exe` from `...\common\Counter-Strike Global Offensive\bin\hammerplusplus.exe` and place it in the folder `...\common\Portal 2\bin`. Then the utility will pick up the path to HammerPlusPlus and open the map through it!
+
+###### *So far, this feature has been tested only on Portal 2...
+
 ## Installation
 
 1. **Run** `compile.bat` without administrator privileges to compile the utility into an `.exe` and choose whether you need **REGHACK**.
