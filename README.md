@@ -4,6 +4,8 @@
 
 When working with `.vmf` files, it is often inconvenient to use the standard file opening methods, and the option to *"Open with"* does not work as it requires additional parameters to be specified through the registry, which is quite problematic. **HammerAssociate** solves this problem by providing a simple and intuitive algorithm for determining which game the map belongs to and automatically launching the corresponding **Hammer Editor**.
 
+###### * Please note that now the HammerPlusPlusAssociate branch is available for HammerPlusPlus!
+
 ## How does the algorithm work?
 
 The utility searches for the executable file `bin\hammer.exe` by scanning the folder hierarchy above the location of the `.vmf` map.
@@ -53,6 +55,10 @@ HKEY_CURRENT_USER\SOFTWARE\Valve\Hammer\General", "Undo Levels", 131072
 1. **Hammer editor** for some reason **cannot properly open** `.vmx` through launch parameters, so when opening `.vmx`, the utility creates a copy of the map with the suffix `_x.vmf` and launches it. **If a file with the same name already exists during copying, the utility will ask if it can replace it.**
 
 2. ~~**In the Hammer editor window title** after opening a map **and in the file replacement dialog**, **a broken path to the map may be displayed.** Don't worry, **this is strictly a graphical artifact and does not affect functionality!**~~ **[FIXED!]**
+
+3. ~~**When creating** `_x.vmf`, in some cases, **the filename becomes corrupted.**~~ **[FIXED!]**
+
+4. Sometimes, **when opening a map**, there is a chance that **Hammer may crash** for unknown reasons. But it is known that this issue is on Hammer's side.
 
 ## License
 
