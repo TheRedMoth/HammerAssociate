@@ -60,6 +60,8 @@ HKEY_CURRENT_USER\SOFTWARE\Valve\Hammer\General", "Undo Levels", 131072
 
 4. Sometimes, **when opening a map**, there is a chance that **Hammer may crash** for unknown reasons. But it is known that this issue is on Hammer's side. It is not critical, simply reopen the map!
 
+## Suggestion
+If you like it Please Sponsor my efforts-Thank you!
 ## License
 
 The utility has no license ¯\\\_(ツ)_/¯ You can do whatever you want with it!
