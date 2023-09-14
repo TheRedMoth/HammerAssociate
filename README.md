@@ -58,7 +58,7 @@ HKEY_CURRENT_USER\SOFTWARE\Valve\Hammer\General", "Undo Levels", 131072
 
 3. ~~**When creating** `_x.vmf`, in some cases, **the filename becomes corrupted.**~~ **[FIXED!]**
 
-4. Sometimes, **when opening a map**, there is a chance that **Hammer may crash** for unknown reasons. But it is known that this issue is on Hammer's side.
+4. Sometimes, **when opening a map**, there is a chance that **Hammer may crash** for unknown reasons. But it is known that this issue is on Hammer's side. It is not critical, simply reopen the map!
 
 ## License
 
