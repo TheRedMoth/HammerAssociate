@@ -12,7 +12,7 @@ if %errorlevel% EQU 0 (
 
 REM Задаем вопрос о методе reghack
 title HammerAssociate - Waiting for input...
-echo Do you want to use the REGHACK feature? [Y/N]
+echo Do you want to use the REGHACK feature? (HAMMER ONLY) [Y/N]
 choice /c yn /n
 if %errorlevel% == 1 (
   REM Скомпилировать main_reghack.py
