@@ -1,8 +1,8 @@
-## HammerAssociate
+## HammerPlusPlusAssociate
 
-**HammerPlusPlusAssociation** is a branch of the **HammerAssociation** project that adds support for the **HammerPlusPlus** modification. It is designed to conveniently open files with the `.vmf` extension in either **HammerPlusPlus** or the regular **Hammer Editor**, depending on the availability of the corresponding executable file.
+**HammerPlusPlusAssociate** is a branch of the **HammerAssociate** project that adds support for the **HammerPlusPlus** modification. It is designed to conveniently open files with the `.vmf` extension in either **HammerPlusPlus** or the regular **Hammer Editor**, depending on the availability of the corresponding executable file.
 
-When **HammerPlusPlusAssociation** works with `.vmf` files, it will attempt to find the `HammerPlusPlus.exe` executable file instead of the standard `hammer.exe`. If the **HammerPlusPlus.exe** file is not found, the utility will launch the regular **Hammer Editor**.
+When **HammerPlusPlusAssociate** works with `.vmf` files, it will attempt to find the `HammerPlusPlus.exe` executable file instead of the standard `hammer.exe`. If the **HammerPlusPlus.exe** file is not found, the utility will launch the regular **Hammer Editor**.
 
 It is worth noting that the **REGHACK** is now applied only to the regular **Hammer.exe**, as the **HammerPlusPlus** modification does not have any issues with object rendering distance limitations.
 
