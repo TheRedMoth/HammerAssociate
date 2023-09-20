@@ -44,6 +44,8 @@ HKEY_CURRENT_USER\SOFTWARE\Valve\Hammer\General", "Undo Levels", 131072
 
 ## Installation
 
+0. **Install PyInstaller** *(if you haven't already)*
+
 1. **Run** `compile.bat` without administrator privileges to compile the utility into an `.exe` and choose whether you need **REGHACK**.
 
 2. **Run** `install.bat` as an administrator to install the necessary associations in the system.
