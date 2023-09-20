@@ -18,11 +18,19 @@ For example, to launch a map from **Portal 2** using **HammerPlusPlus**, you nee
 
 ## Installation
 
-1. **Run** `compile.bat` without administrator privileges to compile the utility into an `.exe` and choose whether you need **REGHACK**.
+0. **Install PyInstaller** *(if you haven't already)*
 
-2. **Run** `install.bat` as an administrator to install the necessary associations in the system.
+1. **Install pywin32**, press WIN+R and enter the command:
 
-3. **Installation complete.** You may need to restart your computer for the changes to take effect.
+```
+pip install pywin32
+```
+
+2. **Run** `compile.bat` without administrator privileges to compile the utility into an `.exe` and choose whether you need **REGHACK**.
+
+3. **Run** `install.bat` as an administrator to install the necessary associations in the system.
+
+4. **Installation complete.** You may need to restart your computer for the changes to take effect.
 
 ## Known issues
 
