@@ -4,8 +4,6 @@
 
 When working with `.vmf` files, it is often inconvenient to use the standard file opening methods, and the option to *"Open with"* does not work as it requires additional parameters to be specified through the registry, which is quite problematic. **HammerAssociate** solves this problem by providing a simple and intuitive algorithm for determining which game the map belongs to and automatically launching the corresponding **Hammer Editor**.
 
-###### * Please note that now the HammerPlusPlusAssociate branch is available for HammerPlusPlus!
-
 ## How does the algorithm work?
 
 The utility searches for the executable file `bin\hammer.exe` by scanning the folder hierarchy above the location of the `.vmf` map.
