@@ -25,6 +25,7 @@ where upx >nul 2>&1
 if %errorlevel% neq 0 (
   echo.
   echo. UPX not found in PATH! Contining without compress...
+  set compress=0
 ) else (
   set compress=1
 )
@@ -114,16 +115,6 @@ if %allusers% == 1 (
   REG ADD "HKEY_LOCAL_MACHINE\SOFTWARE\Classes\vmf_autosavx_auto_file\shell\edit\command" /ve /d "%ProgramFiles(x86)%\HammerAssociate\HammerAssociate.exe %%1" /f
 )
 
-REM Задаем вопрос об установке иконок
-title HammerAssociate - Waiting for input...
-echo.
-echo. Installing complete!
-echo. Do you want to install icons? [Y/N]
-choice /c yn /n
-if %errorlevel% == 0 (
-  goto m1
-)
-
 REM Копируем иконки
 title HammerAssociate - Copying icons...
 copy /Y "%~dp0res\icon_vmf.ico" "%ProgramFiles(x86)%\HammerAssociate"
@@ -161,8 +152,6 @@ if %allusers% == 1 (
   REG ADD "HKEY_LOCAL_MACHINE\SOFTWARE\Classes\vmf_autosave_auto_file\DefaultIcon" /ve /d "%ProgramFiles(x86)%\HammerAssociate\icon_vmf_autosave.ico" /f
   REG ADD "HKEY_LOCAL_MACHINE\SOFTWARE\Classes\vmf_autosavx_auto_file\DefaultIcon" /ve /d "%ProgramFiles(x86)%\HammerAssociate\icon_vmf_autosavx.ico" /f
 )
-
-:m1
 
 REM Всё готово!
 title HammerAssociate - Installing complete!
