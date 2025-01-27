@@ -45,7 +45,7 @@ if %errorlevel% == 1 (
   REM Скомпилировать HammerAssociate.c
   title HammerAssociate - Compiling...
   gcc -o %~dp0src/HammerAssociate.exe %~dp0src/HammerAssociate.c -lshlwapi -mwindows -Os -s
-  if defined %compress% (
+  if %compress% == 1 (
     upx --best %~dp0src/HammerAssociate.exe
   )
 )
@@ -65,7 +65,7 @@ if not exist "%ProgramFiles(x86)%\HammerAssociate" mkdir "%ProgramFiles(x86)%\Ha
 
 REM Перенос .exe файла в %ProgramFiles(x86)%\HammerAssociate
 title HammerAssociate - Moving "bin\HammerAssociate.exe" to "%ProgramFiles(x86)%\HammerAssociate"...
-move /Y src\HammerAssociate.exe "%ProgramFiles(x86)%\HammerAssociate"
+move /Y %~dp0src\HammerAssociate.exe "%ProgramFiles(x86)%\HammerAssociate"
 
 REM Добавим в предлагаемый список
 title HammerAssociate - Adding to the list of suggested files to open...
@@ -124,10 +124,10 @@ if %errorlevel% == 0 (
 
 REM Копируем иконки
 title HammerAssociate - Copying icons...
-move /Y res\icon_vmf.ico "%ProgramFiles(x86)%\HammerAssociate"
-move /Y res\icon_vmx.ico "%ProgramFiles(x86)%\HammerAssociate"
-move /Y res\icon_vmf_autosave.ico "%ProgramFiles(x86)%\HammerAssociate"
-move /Y res\icon_vmf_autosavx.ico "%ProgramFiles(x86)%\HammerAssociate"
+copy /Y %~dp0res\icon_vmf.ico "%ProgramFiles(x86)%\HammerAssociate"
+copy /Y %~dp0res\icon_vmx.ico "%ProgramFiles(x86)%\HammerAssociate"
+copy /Y %~dp0res\icon_vmf_autosave.ico "%ProgramFiles(x86)%\HammerAssociate"
+copy /Y %~dp0res\icon_vmf_autosavx.ico "%ProgramFiles(x86)%\HammerAssociate"
 
 REM Присваеваем иконки
 title HammerAssociate - Assign icons...
@@ -159,10 +159,6 @@ if defined allusers (
   REG ADD "HKEY_LOCAL_MACHINE\SOFTWARE\Classes\vmf_autosave_auto_file\DefaultIcon" /ve /d "%ProgramFiles(x86)%\HammerAssociate\icon_vmf_autosave.ico" /f
   REG ADD "HKEY_LOCAL_MACHINE\SOFTWARE\Classes\vmf_autosavx_auto_file\DefaultIcon" /ve /d "%ProgramFiles(x86)%\HammerAssociate\icon_vmf_autosavx.ico" /f
 )
-
-REM Удаление папки bin
-title HammerAssociate - Deleting temporary files...
-del src\HammerAssociate.exe
 
 :m1
 
