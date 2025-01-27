@@ -29,6 +29,15 @@ if %errorlevel% neq 0 (
   set compress=1
 )
 
+REM Задаем вопрос об установке для всех пользователей
+title HammerAssociate - Waiting for input...
+echo.
+echo. Do you want to install for all users? [Y/N]
+choice /c yn /n
+if %errorlevel% == 1 (
+  set allusers=1
+)
+
 REM Задаем вопрос о методе reghack
 title HammerAssociate - Waiting for input...
 echo.
@@ -48,15 +57,6 @@ if %errorlevel% == 1 (
   if %compress% == 1 (
     upx --best %~dp0src/HammerAssociate.exe
   )
-)
-
-REM Задаем вопрос об установке для всех пользователей
-title HammerAssociate - Waiting for input...
-echo.
-echo. Do you want to install for all users? [Y/N]
-choice /c yn /n
-if %errorlevel% == 1 (
-  set allusers=1
 )
 
 REM Создание папки %ProgramFiles(x86)%\HammerAssociate, если она не существует
