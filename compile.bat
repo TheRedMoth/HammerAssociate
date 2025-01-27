@@ -36,6 +36,8 @@ echo. Do you want to install for all users? [Y/N]
 choice /c yn /n
 if %errorlevel% == 1 (
   set allusers=1
+) else (
+  set allusers=0
 )
 
 REM Задаем вопрос о методе reghack
@@ -124,10 +126,10 @@ if %errorlevel% == 0 (
 
 REM Копируем иконки
 title HammerAssociate - Copying icons...
-copy /Y %~dp0res\icon_vmf.ico "%ProgramFiles(x86)%\HammerAssociate"
-copy /Y %~dp0res\icon_vmx.ico "%ProgramFiles(x86)%\HammerAssociate"
-copy /Y %~dp0res\icon_vmf_autosave.ico "%ProgramFiles(x86)%\HammerAssociate"
-copy /Y %~dp0res\icon_vmf_autosavx.ico "%ProgramFiles(x86)%\HammerAssociate"
+copy /Y "%~dp0res\icon_vmf.ico" "%ProgramFiles(x86)%\HammerAssociate"
+copy /Y "%~dp0res\icon_vmx.ico" "%ProgramFiles(x86)%\HammerAssociate"
+copy /Y "%~dp0res\icon_vmf_autosave.ico" "%ProgramFiles(x86)%\HammerAssociate"
+copy /Y "%~dp0res\icon_vmf_autosavx.ico" "%ProgramFiles(x86)%\HammerAssociate"
 
 REM Присваеваем иконки
 title HammerAssociate - Assign icons...
