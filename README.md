@@ -46,11 +46,11 @@ If `hammer.exe` is not found, the utility uses the information stored in the reg
 
 2. **Install UPX** *(optionally)*
 
+3. **Run** `compile.bat` with administrator privileges to compile and install the utility and choose whether you need **REGHACK** and **icons**
+
+4. **Installation complete.** You may need to restart your computer for the changes to take effect.
+
 ###### Make sure that GCC and UPX are defined in the PATH!!!
-
-4. **Run** `compile.bat` with administrator privileges to compile and install the utility and choose whether you need **REGHACK** and **icons**
-
-5. **Installation complete.** You may need to restart your computer for the changes to take effect.
 
 ## Known issues
 
