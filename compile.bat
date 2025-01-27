@@ -74,7 +74,7 @@ REG ADD "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Application
 REG ADD "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts" /v Applications\HammerAssociate.exe_.vmf_autosave /d "0" /f
 REG ADD "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts" /v Applications\HammerAssociate.exe_.vmf_autosavx /d "0" /f
 
-if defined allusers (
+if %allusers% == 1 (
   REG ADD "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts" /v Applications\HammerAssociate.exe_.vmf /d "0" /f
   REG ADD "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts" /v Applications\HammerAssociate.exe_.vmx /d "0" /f
   REG ADD "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts" /v Applications\HammerAssociate.exe_.vmf_autosave /d "0" /f
@@ -101,7 +101,7 @@ REG ADD "HKEY_CURRENT_USER\SOFTWARE\Classes\vmf_autosave_auto_file\shell\edit\co
 REG ADD "HKEY_CURRENT_USER\SOFTWARE\Classes\vmf_autosavx_auto_file\shell\open\command" /ve /d "%ProgramFiles(x86)%\HammerAssociate\HammerAssociate.exe %%1" /f
 REG ADD "HKEY_CURRENT_USER\SOFTWARE\Classes\vmf_autosavx_auto_file\shell\edit\command" /ve /d "%ProgramFiles(x86)%\HammerAssociate\HammerAssociate.exe %%1" /f
 
-if defined allusers (
+if %allusers% == 1 (
   REG ADD "HKEY_LOCAL_MACHINE\SOFTWARE\Classes\vmf_auto_file\shell\open\command" /ve /d "%ProgramFiles(x86)%\HammerAssociate\HammerAssociate.exe %%1" /f
   REG ADD "HKEY_LOCAL_MACHINE\SOFTWARE\Classes\vmf_auto_file\shell\edit\command" /ve /d "%ProgramFiles(x86)%\HammerAssociate\HammerAssociate.exe %%1" /f
   REG ADD "HKEY_LOCAL_MACHINE\SOFTWARE\Classes\vmx_auto_file\shell\open\command" /ve /d "%ProgramFiles(x86)%\HammerAssociate\HammerAssociate.exe %%1" /f
@@ -149,7 +149,7 @@ REG ADD "HKEY_CURRENT_USER\SOFTWARE\Classes\vmx_auto_file\DefaultIcon" /ve /d "%
 REG ADD "HKEY_CURRENT_USER\SOFTWARE\Classes\vmf_autosave_auto_file\DefaultIcon" /ve /d "%ProgramFiles(x86)%\HammerAssociate\icon_vmf_autosave.ico" /f
 REG ADD "HKEY_CURRENT_USER\SOFTWARE\Classes\vmf_autosavx_auto_file\DefaultIcon" /ve /d "%ProgramFiles(x86)%\HammerAssociate\icon_vmf_autosavx.ico" /f
 
-if defined allusers (
+if %allusers% == 1 (
   REG ADD "HKEY_LOCAL_MACHINE\SOFTWARE\Classes\.vmf" /ve /d "vmf_auto_file" /f
   REG ADD "HKEY_LOCAL_MACHINE\SOFTWARE\Classes\.vmx" /ve /d "vmx_auto_file" /f
   REG ADD "HKEY_LOCAL_MACHINE\SOFTWARE\Classes\.vmf_autosave" /ve /d "vmf_autosave_auto_file" /f
