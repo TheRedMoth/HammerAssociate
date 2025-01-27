@@ -46,9 +46,11 @@ If `hammer.exe` is not found, the utility uses the information stored in the reg
 
 2. **Install UPX** *(optionally)*
 
-3. **Run** `compile.bat` with administrator privileges to compile and install the utility and choose whether you need **REGHACK** and **icons**
+###### Make sure that GCC and UPX are defined in the PATH!!!
 
-4. **Installation complete.** You may need to restart your computer for the changes to take effect.
+4. **Run** `compile.bat` with administrator privileges to compile and install the utility and choose whether you need **REGHACK** and **icons**
+
+5. **Installation complete.** You may need to restart your computer for the changes to take effect.
 
 ## Known issues
 
@@ -65,4 +67,4 @@ If `hammer.exe` is not found, the utility uses the information stored in the reg
 The utility has no license ¯\\\_(ツ)_/¯ You can do whatever you want with it!
 
 ###### * This project was rewritten from Python to C using DeepSeek Coder!
-###### * This text, like the utility itself, was written and translated using ChatGPT-3.5!
+###### * This text was translated using ChatGPT-4!
