@@ -62,6 +62,8 @@ If `hammer.exe` is not found, the utility uses the information stored in the reg
 
 4. Sometimes, **when opening a map**, there is a chance that **Hammer may crash** for unknown reasons. But it is known that this issue is on Hammer's side. It is not critical, simply reopen the map!
 
+## Suggestion
+If you like it Please Sponsor my efforts-Thank you!
 ## License
 
 The utility has no license ¯\\\_(ツ)_/¯ You can do whatever you want with it!
